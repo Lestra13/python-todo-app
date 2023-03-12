@@ -39,7 +39,10 @@ while True:
                 new_todo = values['todo']
                 todos = functions.get_todos()
                 index = todos.index(todo_to_edit)
-                todos[index] = new_todo + "\n"
+                if '\n' in new_todo:
+                    todos[index] = new_todo
+                else:
+                    todos[index] = new_todo + '\n'
                 functions.write_todos(todos)
                 window['todos'].update(values=todos)
             except IndexError:
@@ -47,7 +50,7 @@ while True:
 
         case "Complete":
             try:
-                todo_to_complete = values['todo'][0]
+                todo_to_complete = values['todo']
                 todos = functions.get_todos()
                 todos.remove(todo_to_complete)
                 functions.write_todos(todos)
