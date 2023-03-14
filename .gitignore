@@ -1,3 +1,5 @@
 /venv/
 .idea
 todos.txt
+/dist
+gui.spec
